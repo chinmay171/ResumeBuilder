@@ -1,12 +1,27 @@
 import "./header.css";
 import { Link } from "react-router-dom";
 import logo from "./static/image/logoheader.png";
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { getAuth, signOut } from "firebase/auth";
+import { logoutCreator } from "../redux/action";
 
 let Header = () =>{
     let state = useSelector((state)=>state);
+    let dispatch = useDispatch();
     let auth = state.authReducer;
-    console.log(auth);
+    // console.log(auth);
+    console.log(state);
+    const logout = ()=>{
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            dispatch(logoutCreator());
+          // Sign-out successful.
+        }).catch((error) => {
+          // An error happened.
+        });
+
+
+    }
     return(
         <>
         <div className="header">
@@ -17,7 +32,7 @@ let Header = () =>{
             {auth.isAuth?<ul>
                     <li><Link to="/template">Resume Templates</Link></li>
                     <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/">Log out</Link></li>
+                    <li><Link to="/" onClick={logout}>Log out</Link></li>
                 </ul>:
                 <ul>
                     <li><Link to="/template">Resume Template</Link></li>
