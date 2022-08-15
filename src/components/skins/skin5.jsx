@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import './skin5.css'
-const Skin5 = (props) => {    
+const Skin5 = () => {   
+    let props = useSelector((state)=>state) 
     let {
         fname,
         lname,
@@ -12,17 +14,17 @@ const Skin5 = (props) => {
         city,
         state,
         country,
-        pin,
-    } = props.contact;
+        pincode,
+    } = props.contactReducer;
 
 
     let { cgpa,
          city: educationCity,
          state: educationState,
-         degree, collegeName, 
+         degree, cname, 
          graduationMonth, 
          graduationYear,
-         } = props.education;
+         } = props.educationReducer;
 
     return (
         <React.Fragment>
@@ -37,10 +39,13 @@ const Skin5 = (props) => {
                         <div className="city">{city}</div>
                         <div className="state">{state}</div>
                         <div className="country">{country}</div>
-                        <div className="pin">{pin}</div>
+                        <div className="pin">{pincode}</div>
                     </div>
-                    <div className="phone">{`Ph - ${phone}`}</div>
+                    {/* <div className="phone">{`Ph - ${phone}`}</div>
                     <div className="email">{`Email - ${email}`}</div>
+                     */}
+                     <div className="phone">Ph - {phone}</div>
+                    <div className="email">Email - {email}</div>
                 </div>
             </div>
             <div className="hsum">
@@ -63,13 +68,14 @@ const Skin5 = (props) => {
                 <div className="edu-contact">
                 <div className="course-detail">
                         <div className="degree">{degree}</div>
-                        <div className="college">: {collegeName}</div>
+                        <div className="college">: {cname}</div>
                     </div>
                     <div className="educationCity">{educationCity}</div>
                     <div className="educationState">{educationState}</div>
                     
                 </div>
-                <div className="cgpa">{`CGPA: ${cgpa}`}</div>
+                {/* <div className="cgpa">{`CGPA: ${cgpa}`}</div> */}
+                <div className="cgpa">CGPA: {cgpa}</div>
             </div>
             </div>
         </React.Fragment>

@@ -1,16 +1,28 @@
 import Preview from "./preview";
 import "./contact.css";
 // import { useSelector } from "react-redux";
-import { useState } from "react";
+import {useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
+import { addContactCreator } from "../redux/action"
 
 function Contact(){
-    const [contact,setContact] = useState({})
+    // const [contact,setContact] = useState({})
+
+    let state = useSelector((state)=>state);
+    let dispatch = useDispatch();
+    // console.log(state);
+    // let [contact,setContact] = useState({})
+    let contact = state.contactReducer;
+    console.log(contact);
 
     const onChange = (event)=>{
         let key = event.target.id;
         let value = event.target.value;
-        setContact({...contact,[key]:value})
+        // setContact({...contact,[key]:value})
+
+        let newContact = {...contact,[key]:value};
+        dispatch(addContactCreator(newContact))
     }
 
     const getFieldData = (key)=>{
@@ -51,7 +63,7 @@ function Contact(){
                     </div>
                     <div className="input-group">
                         <label htmlFor="">Professional</label>
-                        <input type="text" id="professional" value={getFieldData("professional")} onChange={onChange}></input>
+                        <input type="text" id="profession" value={getFieldData("profession")} onChange={onChange}></input>
                     </div>
                     <div className="input-group">
                         <label htmlFor="">Street</label>
@@ -74,12 +86,18 @@ function Contact(){
                         <input type="text" id="pincode" value={getFieldData("pincode")} onChange={onChange}></input>
                     </div>
 
-                    <div className="next btn full">
-                        <Link to="/education">Next</Link>
+                    {/* <div className="next btn full">
+                        <Link to="/template">Back</Link> */}
+                        <div className="btn full btn-full">
+                        <Link to="/education" className="back">Next</Link>
                    </div>
-                   <div className="next btn full">
-                        <Link to="/template">Back</Link>
+                        <div className="back-next btn-full
+                    btn full">
+                        <Link to="/template" className="back">Back</Link>
                    </div>
+                   {/* <div className="back btn full">
+                        <Link to="/education">Next</Link> */}
+                        
                 </div>
             </div>
             <div className="preview-form">

@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./skin2.css";
-const Skin2 = (props) => {
+const Skin2 = () => {
+  let props = useSelector((state)=>state)
   let {
     fname,
     lname,
@@ -12,18 +14,18 @@ const Skin2 = (props) => {
     city,
     state,
     country,
-    pin,
-  } = props.contact;
+    pincode,
+  } = props.contactReducer;
 
   let {
     cgpa,
     city: educationCity,
     state: educationState,
     degree,
-    collegeName,
+    cname,
     graduationMonth,
     graduationYear,
-  } = props.education;
+  } = props.educationReducer;
 //   let skills = props.skills;
   // console.log(props);
 //   let projects = props.projects;
@@ -39,7 +41,7 @@ const Skin2 = (props) => {
       <div className="contact-details-skin2">
         <div className="contact-details-name-s2">
           <div className="contact-details-logo-s2">
-            {fname.charAt(0)} {lname.charAt(0)}
+          {fname!=undefined?fname.charAt(0):""} {lname == undefined?"":lname.charAt(0)}
           </div>
           <div className="contact-details-fullName-s2">
             {fname} {lname}{" "}
@@ -48,7 +50,7 @@ const Skin2 = (props) => {
         </div>
         <div className="contact-details-email-phone-s2">
           <div className="contact-details-address-s2">
-            {street} {city} {pin} {state}
+            {street} {city} {pincode} {state}
           </div>
           <div className="contact-details-phone-s2">{phone}</div>
           <div className="contact-details-email-s2">{email}</div>
@@ -83,7 +85,7 @@ const Skin2 = (props) => {
             {degree} with GPA : {cgpa}
           </div>
           <div className="education-details-name-s2">
-            {collegeName} , {educationCity} , {educationState} {graduationMonth}{" "}
+            {cname} , {educationCity} , {educationState} {graduationMonth}{" "}
             {graduationYear}
           </div>
         </div>

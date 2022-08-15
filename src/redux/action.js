@@ -5,13 +5,6 @@ export const setSkinCreator = (value)=>{
     }
 }
 
-export const updateSkinCreator = (value)=>{
-    return{
-        type:"UPDATE_SKIN",
-        document:value
-    }
-}
-
 export const addContactCreator = (value)=>{
     return{
         type:"ADD_CONTACT",
@@ -23,5 +16,11 @@ export const addEducationCreator = (value)=>{
     return{
         type:"ADD_EDUCATION",
         education:value
+    }
+}
+
+export const logoutCreator = ()=>{
+    return{
+        type:"LOGOUT"
     }
 } 

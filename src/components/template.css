@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-.template-styles{
+.templates-styles{
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -38,7 +38,8 @@
 }
 
 .template-btn{
-    background-color: red;
+    height: 35px;
+    background-color: seagreen;
     color: white;
     border-radius: 5px;
     border:1px solid white;

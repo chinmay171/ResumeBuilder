@@ -45,9 +45,22 @@
 
 .full{
     width: 95%;
-} 
+}
 
-.next , .back{
+.btn-full{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back{
+    height: 100%;
+    width: 100%;
     text-align: center;
+    color: seagreen;
     text-decoration: none;
+}
+
+.back:hover{
+    color: white;
 }

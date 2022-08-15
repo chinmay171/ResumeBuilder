@@ -2,15 +2,23 @@ import Preview from "./preview";
 import "./education.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
+import {addEducationCreator} from "../redux/action"
+
 
 function Education(){
 
-    const [education,setEducation] = useState({})
+    // const [education,setEducation] = useState({})
+    let state = useSelector((state)=>state);
+    let dispatch = useDispatch();
+    let education = state.educationReducer;
 
     const onChange = (event)=>{
         let key = event.target.id;
         let value = event.target.value;
-        setEducation({...education,[key]:value})
+        // setEducation({...education,[key]:value})
+        let newEducation = {...education,[key]:value}
+        dispatch(addEducationCreator(newEducation))
     }
 
     const getFieldData = (key)=>{
@@ -59,12 +67,17 @@ function Education(){
                         <input type="text" id="graduationYear" value={getFieldData("graduationYear")} onChange={onChange}></input>
                     </div>
 
-                    <div className="next btn full">
-                        <Link to="/">Next</Link>
+                    {/* <div className="back full">
+                    <Link to="/contact">Back</Link> */}
+                    <div className="btn full btn-full">
+                        <Link to="/finalize" className="back">Next</Link>
                    </div>
-                   <div className="back full">
-                    <Link to="/contact">Back</Link>
+                    {/* <div className="next btn full">
+                        <Link to="/finalize">Next</Link> */}
+                        <div className="back-next btn full btn-full">
+                        <Link to="/contact" className="back">Back</Link>
                    </div>
+                   
 
                 </div>
             </div>

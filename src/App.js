@@ -7,8 +7,12 @@ import Signin from "./components/signin";
 import Contact from "./components/contact";
 import Education from "./components/education";
 import { Route, Switch } from "react-router-dom";
+import Finalize from "./components/finalize";
+import { useSelector } from "react-redux";
 
 function App() {
+  let state = useSelector((state)=>state);
+  let auth = state.authReducer;
   return (
     <>
     <Header/>
@@ -16,13 +20,15 @@ function App() {
       <Route path="/" exact>
         <LandingPage></LandingPage>
       </Route>
-      <Route path="/template" exact>
+      {/* <Route path="/template" exact>
         <Template></Template>
-      </Route>
+      </Route> */}
+      <Route path="/template" exact component={auth.isAuth?Template:Signin}></Route>
+     {/* <Route path="/about" exact></Route> */}
       <Route path="/about" exact>
         <About></About>
       </Route>
-      <Route path="/register" exact>
+      {/* <Route path="/register" exact>
         <Register></Register>
       </Route>
       <Route path="/signin" exact>
@@ -34,6 +40,14 @@ function App() {
       <Route path="/education" exact>
         <Education></Education>
       </Route>
+      < Route path="/finalize" exact>
+        <Finalize></Finalize>
+      </Route> */}
+      <Route path="/register" exact component={auth.isAuth? LandingPage:Register}></Route>
+      <Route path="/signin" exact component={auth.isAuth? LandingPage:Signin}></Route>
+      <Route path="/contact" exact component={auth.isAuth?Contact:Signin}></Route>
+      <Route path="/education" exact component={auth.isAuth?Education:Signin}></Route>
+      <Route path="/finalize" exact component={auth.isAuth?Finalize:Signin}></Route>
     </Switch>
     </>
   );

@@ -4,11 +4,13 @@
     box-shadow: 0 1px 2px 0 grey;
     display: flex;
     justify-content: space-evenly;
+    /* background-color: aquamarine; */
 }
 
 .header-logo, .header-logo img{
     height: 100%;
     object-fit: contain;
+    /* background-color: aqua; */
 }
 
 .header-links{
@@ -31,19 +33,19 @@
 }
 
 .header-links ul li a:hover{
-    color: red;
+    color: seagreen;
 }
 
 .btn {
     background-color: transparent;
-    border: 2px solid red;
+    border: 2px solid seagreen;
     border-radius: 5px;
     padding: 5px;
 }
 
 .btn:hover{
     border:2px solid white;
-    background-color: red;
+    background-color: seagreen;
     color: white;
     border-radius: 5px;
     padding: 5px;
